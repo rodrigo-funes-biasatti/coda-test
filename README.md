@@ -14,5 +14,5 @@ Entrevista técnica de Rodrigo Funes Biasatti para Agency Coda, desarrollada en 
 
 ### Total de horas: `6hs`
 
-### Link del repositorio: [Coda Test - Rodrigo Funes Biasatti]()
+### Link del repositorio: [Coda Test - Rodrigo Funes Biasatti](https://github.com/rodrigo-funes-biasatti/coda-test/)
 
