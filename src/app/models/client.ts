@@ -12,4 +12,10 @@ export class Client extends MiaModel {
     updated_at: string = '';
     deleted: number = 0;
 
+    constructor(firstName: string, lastName: string, email: string) {
+        super();
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.email = email
+    }
 }
