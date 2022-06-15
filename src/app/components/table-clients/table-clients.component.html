@@ -3,6 +3,6 @@
         <mat-icon>add</mat-icon>
     </button>
 </div>
-<div class="table">
-    <mia-table [config]="tableConfig" [mockData]="mockData"></mia-table>
+<div class="table" *ngIf="(clientData$ | async) as clientData">
+    <mia-table *ngIf="clientData.data" [config]="tableConfig" [mockData]="clientData"></mia-table>
 </div>

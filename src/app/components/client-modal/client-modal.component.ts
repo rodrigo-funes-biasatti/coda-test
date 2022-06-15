@@ -1,10 +1,11 @@
 import { MiaFormComponent, MiaFormConfig } from '@agencycoda/mia-form';
-import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/models/client';
 import { ClientService } from 'src/app/services/client.service';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { ClientsStore } from 'src/app/stores/clients.store';
 
 @Component({
   selector: 'app-client-modal',
@@ -14,12 +15,14 @@ import { SnackBarService } from 'src/app/services/snack-bar.service';
 export class ClientModalComponent implements OnInit {
 
   @ViewChild(MiaFormComponent) miaForm!: MiaFormComponent;
+  @Output() onSubmitForm = new EventEmitter<any>();
 
   config!: MiaFormConfig;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private snackBarService: SnackBarService,
-    private clientService: ClientService) { }
+    private clientService: ClientService,
+    private clientStore: ClientsStore) { }
 
   ngOnInit(): void {
     this.loadForm();
@@ -47,7 +50,10 @@ export class ClientModalComponent implements OnInit {
       this.miaForm.submit().subscribe(
         (result) => {
           this.clientService.createUpdate(result).subscribe(
-            () => this.snackBarService.show("Se guardó el Cliente con éxito."),
+            () => {
+              this.snackBarService.show("Se guardó el Cliente con éxito.");
+              this.clientStore.fetchClientData();
+            },
             err => this.snackBarService.show("No se ha podido guardar el Cliente: " + err));
         },
         (err) => { console.error(err) }
@@ -59,7 +65,10 @@ export class ClientModalComponent implements OnInit {
         this.miaForm.group.get('lastname')?.value,
         this.miaForm.group.get('email')?.value,
       )).subscribe(
-        () => this.snackBarService.show("Se guardó el Cliente con éxito."),
+        () => {
+          this.snackBarService.show("Se guardó el Cliente con éxito.");
+          this.clientStore.fetchClientData();
+        },
         err => this.snackBarService.show("No se ha podido guardar el Cliente: " + err));
     }
   }

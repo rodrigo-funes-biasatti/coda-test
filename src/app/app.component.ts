@@ -15,16 +15,5 @@ export class AppComponent {
   value = 50;
   data?: any;
 
-  constructor(public spinnerService: SpinnerService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.router.navigated = false;
-      }
-    });
-  }
-
-
+  constructor(public spinnerService: SpinnerService) { }
 }

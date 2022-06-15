@@ -4,15 +4,16 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 import { Client } from '../models/client';
 import { ClientService } from '../services/client.service';
+import { ClientsStore } from '../stores/clients.store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesResolveService implements Resolve<MiaPagination<Client>>{
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientStore: ClientsStore) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MiaPagination<Client>> {
-    return this.clientService.getAll()
+  resolve(): Observable<MiaPagination<Client>> {
+    return this.clientStore.getClientData().asObservable();
   }
 }
