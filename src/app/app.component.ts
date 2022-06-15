@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { SpinnerService } from './services/spinner.service';
 
 @Component({

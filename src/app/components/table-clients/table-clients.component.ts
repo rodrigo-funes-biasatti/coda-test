@@ -1,7 +1,6 @@
 import { MiaPagination } from '@agencycoda/mia-core';
 import { MiaTableComponent, MiaTableConfig } from '@agencycoda/mia-table';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import {
   TABLE_CONFIG,
   COLUMNS_CONFIGURATION,
@@ -10,7 +9,6 @@ import { Client } from 'src/app/models/client';
 import { ClientModalComponent } from '../client-modal/client-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ACTIONS_MODAL } from 'src/app/constants/actions-modal';
-import { ClientService } from 'src/app/services/client.service';
 import { DeleteClientModalComponent } from '../delete-client-modal/delete-client-modal.component';
 import { ClientsStore } from 'src/app/stores/clients.store';
 import { BehaviorSubject } from 'rxjs';

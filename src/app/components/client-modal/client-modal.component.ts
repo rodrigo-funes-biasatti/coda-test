@@ -1,5 +1,5 @@
 import { MiaFormComponent, MiaFormConfig } from '@agencycoda/mia-form';
-import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/models/client';
